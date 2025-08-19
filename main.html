@@ -1,11 +1,248 @@
-<!DOCTYPE html>
-<html lang="en">
+<!doctype html>
+<html lang="fr">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Bot TikTok — Préparation (TikTok Developers)</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap" rel="stylesheet">
+  <meta name="description" content="Page d'interface et guide pour préparer un bot TikTok en vue d'une intégration avec TikTok Developers App." />
+  <style>
+    :root{
+      --bg:#0f1724; /* dark blue */
+      --card:#0b1220;
+      --muted:#94a3b8;
+      --accent1:#06b6d4; /* cyan */
+      --accent2:#7c3aed; /* purple */
+      --glass: rgba(255,255,255,0.04);
+      --radius:14px;
+      --container:1100px;
+      font-family: 'Inter', system-ui, -apple-system, 'Segoe UI', Roboto, 'Helvetica Neue', Arial;
+      color-scheme: dark;
+    }
+    *{box-sizing:border-box}
+    html,body{height:100%}
+    body{
+      margin:0;
+      background: radial-gradient(1200px 400px at 10% 10%, rgba(124,58,237,0.12), transparent 6%),
+                  radial-gradient(900px 300px at 90% 90%, rgba(6,182,212,0.06), transparent 8%),
+                  var(--bg);
+      color:#e6eef8;
+      -webkit-font-smoothing:antialiased;
+      -moz-osx-font-smoothing:grayscale;
+      padding:40px 20px;
+      display:flex;
+      justify-content:center;
+    }
+    .wrap{width:100%;max-width:var(--container)}
+
+    header{
+      display:flex;align-items:center;justify-content:space-between;margin-bottom:28px;
+    }
+    .brand{display:flex;align-items:center;gap:14px}
+    .logo{
+      width:56px;height:56px;border-radius:12px;background:linear-gradient(135deg,var(--accent2),var(--accent1));
+      display:flex;align-items:center;justify-content:center;font-weight:700;font-size:20px;box-shadow:0 6px 18px rgba(12,15,20,0.6);
+    }
+    h1{margin:0;font-size:20px}
+    .subtitle{color:var(--muted);font-size:13px}
+
+    .controls{display:flex;gap:10px;align-items:center}
+    .btn{background:linear-gradient(90deg,rgba(255,255,255,0.06),rgba(255,255,255,0.02));border:1px solid rgba(255,255,255,0.04);padding:10px 14px;border-radius:10px;color:inherit;font-weight:600;cursor:pointer}
+    .btn.primary{background:linear-gradient(90deg,var(--accent1),var(--accent2));color:#051024;border:box-shadow:0 6px 18px rgba(12,15,20,0.5)}
+
+    .grid{display:grid;grid-template-columns:1fr 420px;gap:22px}
+    @media (max-width:980px){.grid{grid-template-columns:1fr}.controls{display:none}}
+
+    .card{background:linear-gradient(180deg, rgba(255,255,255,0.02), rgba(255,255,255,0.01));border-radius:var(--radius);padding:18px;border:1px solid rgba(255,255,255,0.03);box-shadow:0 8px 30px rgba(2,6,23,0.6)}
+
+    /* Left column */
+    .hero{display:flex;gap:18px;align-items:flex-start}
+    .hero-left{flex:1}
+    .badge{display:inline-block;padding:6px 10px;border-radius:999px;background:var(--glass);border:1px solid rgba(255,255,255,0.03);color:var(--muted);font-weight:600;font-size:12px}
+    .lead{margin-top:12px;font-size:28px;line-height:1.05}
+    .lead small{display:block;font-size:14px;color:var(--muted);font-weight:600;margin-top:8px}
+    .feature-list{display:grid;grid-template-columns:repeat(2, minmax(0,1fr));gap:10px;margin-top:16px}
+    .feature{background:linear-gradient(180deg, rgba(255,255,255,0.01), transparent);padding:12px;border-radius:10px;border:1px solid rgba(255,255,255,0.02)}
+    .feature strong{display:block}
+
+    .code-block{font-family:ui-monospace, SFMono-Regular, Menlo, Monaco, 'Roboto Mono', monospace;background:rgba(2,6,23,0.6);padding:14px;border-radius:10px;margin-top:14px;overflow:auto;font-size:13px}
+
+    /* Right column */
+    .sidebar h3{margin-top:0}
+    .meta-row{display:flex;justify-content:space-between;gap:8px;align-items:center}
+    .muted{color:var(--muted);font-size:13px}
+    .checklist{margin-top:12px;display:flex;flex-direction:column;gap:8px}
+    .check{display:flex;gap:10px;align-items:flex-start}
+    .dot{width:14px;height:14px;border-radius:4px;background:rgba(255,255,255,0.04);display:inline-flex;align-items:center;justify-content:center;font-size:11px}
+    .small{font-size:13px}
+
+    footer{margin-top:20px;text-align:center;color:var(--muted);font-size:13px}
+
+    /* form */
+    form{display:flex;flex-direction:column;gap:8px}
+    label{font-size:13px;color:var(--muted)}
+    input[type=text], input[type=url], textarea{background:transparent;border:1px solid rgba(255,255,255,0.04);padding:10px;border-radius:8px;color:inherit;font-size:14px}
+    .hint{font-size:12px;color:var(--muted)}
+
+    .pill{display:inline-block;padding:6px 8px;border-radius:999px;background:rgba(255,255,255,0.02);border:1px solid rgba(255,255,255,0.03);font-weight:600}
+
+    .status-good{color:#34d399;font-weight:700}
+    .status-warn{color:#f59e0b;font-weight:700}
+    .status-off{color:#ef4444;font-weight:700}
+
+    /* small responsive tweaks */
+    @media (max-width:520px){.lead{font-size:22px}.feature-list{grid-template-columns:1fr}}
+  </style>
 </head>
 <body>
-    <h1>Bot TIKTOK</h1>
+  <div class="wrap">
+    <header>
+      <div class="brand">
+        <div class="logo">TT</div>
+        <div>
+          <h1>Bot TikTok — Préparation</h1>
+          <div class="subtitle">Guide et interface pour votre intégration TikTok Developers App</div>
+        </div>
+      </div>
+      <div class="controls">
+        <button class="btn">Documentation</button>
+        <button class="btn primary">Connecter l'app (préparation)</button>
+      </div>
+    </header>
+
+    <main class="grid">
+      <section>
+        <div class="card hero">
+          <div class="hero-left">
+            <span class="badge">En préparation</span>
+            <h2 class="lead">Construisez et testez votre bot TikTok pour l'API <small>— prêt pour TikTok Developers App</small></h2>
+            <p class="muted" style="margin-top:12px">Cette page centralise les étapes clés, les variables d'environnement et les endpoints à configurer pour que votre bot fonctionne avec les scopes et le mécanisme OAuth de TikTok.</p>
+
+            <div class="feature-list">
+              <div class="feature"><strong>OAuth 2.0</strong><span class="muted">Support pour Authorization Code</span></div>
+              <div class="feature"><strong>Webhooks</strong><span class="muted">Recevez événements en temps réel</span></div>
+              <div class="feature"><strong>Gestion des tokens</strong><span class="muted">Refresh / rotation</span></div>
+              <div class="feature"><strong>Sandbox</strong><span class="muted">Mode test dédié</span></div>
+            </div>
+
+            <div class="code-block">
+<pre>&lt;!-- Exemple d'URL d'autorisation (placeholders) --&gt;
+https://open-api.tiktok.com/platform/oauth/connect/?client_key=VOTRE_CLIENT_KEY&amp;response_type=code&amp;scope=user.info.basic&amp;redirect_uri=https://votreapp.example.com/callback
+
+&lt;!-- Exemple: variables d'environnement --&gt;
+TIKTOK_CLIENT_KEY=...
+TIKTOK_CLIENT_SECRET=...
+TIKTOK_REDIRECT_URI=https://votreapp.example.com/callback
+</pre>
+            </div>
+
+            <div style="margin-top:16px;display:flex;gap:10px">
+              <button class="btn">Copier la configuration</button>
+              <button class="btn">Simuler connexion</button>
+            </div>
+          </div>
+
+          <aside style="width:280px">
+            <div class="muted">Aperçu rapide</div>
+            <div style="margin-top:12px;display:flex;gap:8px;align-items:center">
+              <div class="pill">App ID: <strong style="margin-left:6px">demo-1234</strong></div>
+              <div class="pill">Mode: Sandbox</div>
+            </div>
+
+            <div style="margin-top:14px">
+              <div class="muted">Statut</div>
+              <div style="margin-top:8px;font-size:14px">Authentification: <span class="status-warn">Non testée</span></div>
+              <div style="margin-top:6px;font-size:14px">Webhooks: <span class="status-off">Non configurés</span></div>
+            </div>
+          </aside>
+        </div>
+
+        <div style="height:18px"></div>
+
+        <div class="card">
+          <h3>Checklist technique</h3>
+          <div class="muted">Étapes recommandées avant la soumission à TikTok Developers</div>
+          <div class="checklist">
+            <div class="check"><div class="dot">1</div><div><strong>Créer l'application sur TikTok Developers</strong><div class="small muted">Obtenir client_key & client_secret</div></div></div>
+            <div class="check"><div class="dot">2</div><div><strong>Configurer le redirect URI</strong><div class="small muted">URI sécurisée (HTTPS)</div></div></div>
+            <div class="check"><div class="dot">3</div><div><strong>Définir les scopes nécessaires</strong><div class="small muted">Ex: user.info.basic, video.upload, etc.</div></div></div>
+            <div class="check"><div class="dot">4</div><div><strong>Activer webhooks</strong><div class="small muted">Valider la requête de challenge</div></div></div>
+            <div class="check"><div class="dot">5</div><div><strong>Tester en sandbox</strong><div class="small muted">Vérifier les refresh tokens et les erreurs</div></div></div>
+          </div>
+        </div>
+
+        <div style="height:18px"></div>
+
+        <div class="card">
+          <h3>Notes développeur</h3>
+          <p class="muted">Exemples rapides et recommandations :</p>
+          <ul class="muted" style="margin-top:8px">
+            <li>Stockez client_secret côté serveur, ne l'exposez jamais dans le front-end.</li>
+            <li>Utilisez HTTPS partout (TikTok rejette les redirect_uri non sécurisés).</li>
+            <li>Surveillez les quotas d'API et implémentez du retry/backoff.</li>
+            <li>Implémentez une page de consent personnalisée si nécessaire.</li>
+          </ul>
+        </div>
+      </section>
+
+      <aside class="sidebar">
+        <div class="card">
+          <h3>Connecter votre application</h3>
+          <div class="muted">Formulaire de préparation — les actions réelles demandent une intégration serveur.</div>
+          <form onsubmit="event.preventDefault();alert('Simulation: suivre la checklist et configurer côté serveur.')">
+            <label for="clientKey">Client Key</label>
+            <input id="clientKey" type="text" placeholder="Entrez votre client_key">
+            <label for="redirect">Redirect URI</label>
+            <input id="redirect" type="url" placeholder="https://votreapp.example.com/callback">
+            <label for="scopes">Scopes (séparés par espace)</label>
+            <input id="scopes" type="text" value="user.info.basic video.upload">
+            <div style="display:flex;gap:8px;margin-top:8px">
+              <button class="btn primary" type="submit">Simuler OAuth</button>
+              <button class="btn" type="button" onclick="copySample()">Copier sample .env</button>
+            </div>
+          </form>
+
+          <div style="margin-top:12px" class="muted">
+            <strong>Exemple callback</strong>
+            <div class="small">GET /callback?code=AUTH_CODE</div>
+          </div>
+        </div>
+
+        <div style="height:12px"></div>
+
+        <div class="card">
+          <h3>Exemple .env</h3>
+          <div class="code-block">
+<pre>TIKTOK_CLIENT_KEY=VOTRE_CLIENT_KEY
+TIKTOK_CLIENT_SECRET=VOTRE_CLIENT_SECRET
+TIKTOK_REDIRECT_URI=https://votreapp.example.com/callback
+NODE_ENV=production
+</pre>
+          </div>
+        </div>
+
+        <div style="height:12px"></div>
+
+        <div class="card">
+          <h3>Support & aides</h3>
+          <p class="muted">Besoin d'aide pour intégrer les webhooks, le rafraîchissement de token ou la soumission à TikTok Developers ?</p>
+          <div style="display:flex;gap:8px;margin-top:10px"><button class="btn">Guide webhooks</button><button class="btn">Exemples API</button></div>
+        </div>
+      </aside>
+    </main>
+
+    <footer>
+      Prototype — page générée pour préparer l'intégration avec TikTok Developers • Modifiez le contenu selon vos besoins.
+    </footer>
+  </div>
+
+  <script>
+    function copySample(){
+      const sample = `TIKTOK_CLIENT_KEY=VOTRE_CLIENT_KEY\nTIKTOK_CLIENT_SECRET=VOTRE_CLIENT_SECRET\nTIKTOK_REDIRECT_URI=https://votreapp.example.com/callback\nNODE_ENV=production\n`;
+      navigator.clipboard?.writeText(sample).then(()=>alert('Exemple .env copié dans le presse-papier'))
+    }
+  </script>
 </body>
 </html>
