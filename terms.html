@@ -1,12 +1,89 @@
-<!DOCTYPE html>
-<html lang="en">
+<!doctype html>
+<html lang="fr">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Conditions d'utilisation — Bot TikTok</title>
+  <meta name="description" content="Conditions d'utilisation pour le bot TikTok en préparation (prévu pour intégration TikTok Developers App)." />
+  <style>
+    :root{--bg:#0b1220;--card:#071021;--muted:#9aa9bd;--accent:#06b6d4;--radius:12px;font-family:Inter, system-ui, -apple-system, 'Segoe UI', Roboto, Arial;color-scheme:dark;color:#e6eef8}
+    *{box-sizing:border-box}
+    body{margin:0;background:linear-gradient(180deg,#071025 0%,var(--bg) 100%);padding:36px;min-height:100vh}
+    .container{max-width:900px;margin:0 auto}
+    .card{background:linear-gradient(180deg,rgba(255,255,255,0.02),rgba(255,255,255,0.01));border-radius:var(--radius);padding:22px;border:1px solid rgba(255,255,255,0.03)}
+    h1{margin:0 0 6px 0;font-size:20px}
+    .meta{color:var(--muted);font-size:13px;margin-bottom:18px}
+    h2{margin-top:18px;font-size:16px}
+    p{color:#cfe6ff;line-height:1.5}
+    ul{color:#cfe6ff}
+    .small{color:var(--muted);font-size:13px}
+    .actions{display:flex;gap:8px;margin-top:16px}
+    .btn{background:transparent;border:1px solid rgba(255,255,255,0.04);padding:8px 10px;border-radius:8px;color:inherit;cursor:pointer}
+    .btn.primary{background:linear-gradient(90deg,var(--accent),#7c3aed);color:#041024;border:none}
+    footer{margin-top:16px;color:var(--muted);font-size:13px;text-align:center}
+    pre{background:rgba(255,255,255,0.02);padding:10px;border-radius:8px;overflow:auto}
+  </style>
 </head>
 <body>
-    <h1>Bot TIKTOK</h1>
-    <h2>Terms</h2>
+  <div class="container">
+    <div class="card">
+      <h1>Conditions d'utilisation — Bot TikTok (pré-version)</h1>
+      <div class="meta">Dernière mise à jour : 19 août 2025 • Version : 0.1 (préparation)</div>
+
+      <p>Bienvenue — ces <strong>Conditions d'utilisation</strong> ("Conditions") régissent votre accès et votre utilisation du bot TikTok ("Service"), développé et maintenu par l'équipe de préparation ("Nous"). En utilisant ce Service — même en phase de test ou sandbox — vous acceptez ces Conditions et les politiques applicables de TikTok Developers.</p>
+
+      <h2>1. Champ d'application</h2>
+      <p>Ces Conditions s'appliquent à toute personne ou entité qui accède au Service, que ce soit à des fins de développement, de test (sandbox) ou de production. Elles complètent, sans s'y substituer, les conditions et politiques imposées par TikTok, incluant les règles d'utilisation de l'API, les limites de quota, et la politique de confidentialité de TikTok.</p>
+
+      <h2>2. Acceptation des règles de TikTok</h2>
+      <p>Le Service s'appuie sur les APIs et outils fournis par TikTok Developers. Vous acceptez de respecter les <em>Terms of Service</em> de TikTok, ainsi que les règles spécifiques aux scopes et webhooks que vous activez. Nous déclinons toute responsabilité si vous violez les conditions imposées par TikTok.</p>
+
+      <h2>3. Inscription et accès</h2>
+      <p>Pour utiliser certaines fonctionnalités, vous devez enregistrer une application auprès de TikTok Developers et fournir les identifiants (client_key, client_secret). Vous êtes responsable de la protection de ces identifiants et de leur stockage sécurisé côté serveur.</p>
+
+      <h2>4. Comptes utilisateur & données</h2>
+      <p>Le Service peut accéder à des données d'utilisateur (par ex. profil public, vidéos) uniquement si vous obtenez un consentement via le flux OAuth de TikTok et dans les limites des scopes accordés. Vous vous engagez à informer clairement vos utilisateurs des données collectées et de leur utilisation.</p>
+
+      <h2>5. Webhooks et sécurité</h2>
+      <p>Si vous activez des webhooks, vous devez exposer un endpoint HTTPS sécurisé capable de valider les requêtes de TikTok (challenge / signature). Nous recommandons la rotation régulière des secrets et la validation stricte des entrées pour prévenir les abus.</p>
+
+      <h2>6. Limites d'utilisation</h2>
+      <p>Vous acceptez de ne pas utiliser le Service pour :</p>
+      <ul>
+        <li>violations de la loi, activités illégales ou contrefaçon ;</li>
+        <li>harcèlement, discours haineux, ou diffusion de contenus interdits ;</li>
+        <li>scraping massif sans respecter les limites de l'API ou contourner les quotas ;</li>
+        <li>actions susceptibles de compromettre la sécurité, la confidentialité ou la disponibilité du Service ou des systèmes tiers.</li>
+      </ul>
+
+      <h2>7. Propriété intellectuelle</h2>
+      <p>Tous les éléments du Service fournis par Nous (code, interface, documentation) restent notre propriété intellectuelle, sauf mention contraire. Les marques de TikTok et les contenus utilisateurs restent la propriété de leurs titulaires respectifs.</p>
+
+      <h2>8. Responsabilité et garanties</h2>
+      <p>Le Service est fourni « tel quel » à des fins de préparation et de test. Dans la mesure permise par la loi, Nous déclinons toute garantie expresse ou implicite, y compris l'adéquation à un usage particulier. Notre responsabilité est limitée aux dommages directs et prévisibles — nous ne serons pas responsables des pertes indirectes, fortuites ou immatérielles.</p>
+
+      <h2>9. Modifications du service et des Conditions</h2>
+      <p>Nous pouvons modifier ou interrompre le Service, en tout ou partie, à tout moment. Nous nous réservons le droit de mettre à jour ces Conditions. Les modifications seront publiées sur cette page avec une nouvelle date de mise à jour.</p>
+
+      <h2>10. Résiliation</h2>
+      <p>Nous pouvons restreindre, suspendre ou résilier votre accès en cas de violation de ces Conditions ou des règles de TikTok, ou pour toute autre raison légitime. Toutes les obligations nées avant la résiliation demeureront en vigueur.</p>
+
+      <h2>11. Données personnelles & confidentialité</h2>
+      <p>Ces Conditions ne remplacent pas une politique de confidentialité. Si vous collectez des données personnelles via le Service, vous devez fournir une politique de confidentialité claire et conforme au RGPD (si applicable) et autres lois locales. Nous traitons toute donnée sensible conformément aux exigences légales et aux contrats applicables avec TikTok.</p>
+
+      <h2>12. Contact</h2>
+      <p>Pour toute question relative à ces Conditions ou demander des informations : <strong>support@votreapp.example.com</strong>.</p>
+
+      <h2>13. Droit applicable</h2>
+      <p>Ces Conditions sont régies par le droit français (ou celui que vous spécifierez). Tout litige sera soumis aux tribunaux compétents, sauf disposition contraire d'ordre public.</p>
+
+      <div class="actions">
+        <button class="btn">Télécharger (PDF)</button>
+        <button class="btn primary">Modifier / Personnaliser</button>
+      </div>
+
+      <footer>Version de démonstration — ce document est fourni à titre indicatif. Il ne remplace pas un avis juridique. Pour une politique finale, consultez un juriste.</footer>
+    </div>
+  </div>
 </body>
 </html>
